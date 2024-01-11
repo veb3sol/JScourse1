@@ -34,6 +34,7 @@ console.log(typeof ss2) //number
 vv = 30 + '' + undefined    //30undefined --- получим строку
 vv = 30 * '5'       //150 - если это не + то получис число
 vv = false + undefined // NaN  -- пытается преобразовать в число
+vv = true + 10 // 11
 
 // String to number
 vv = Number('23') // 23 - число
@@ -42,8 +43,11 @@ vv = Number(null) // 0 - число
 vv = Number('privet') // NaN - не может быть преобразовано в число
 vv = Number([1,2,3]) // NaN - не может быть преобразовано в число
 
-vv = parseInt('200cdef')    // 200  -- выделит число, если перед числом нету символов
-vv = parseFloat(' 21.35bhh')    // 21.35 -- для дробных чисел
+vv1 = parseInt('200cdef')    // 200  -- выделит число, если перед числом нету символов
+vv1 = parseFloat(' 21.99bhh')    // 21.35 -- для дробных чисел
+
+console.log(vv1) 
+console.log( typeof vv1) 
 
 // Boolean
 vv = Boolean('as')  // true  -- любая непустая строка, или пробел

@@ -40,6 +40,13 @@ if(value.length){
     console.log('это пустой массив')
 }
 
+// проверка является ли массивом
+if(Array.isArray(value)){
+    console.log('is Array!')
+}else{
+    console.log('is not Array')
+}
+
 value = {
     city: 'Kiev'
 }

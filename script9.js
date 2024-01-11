@@ -3,6 +3,8 @@ const n1 = 10
 const n2 = 20
 let value
 
+console.log(typeof value) //undefined - если значение еще не назначено
+
 // +-*/ %
 value = n1 + n2
 value = value + 100
