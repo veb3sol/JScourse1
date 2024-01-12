@@ -76,14 +76,24 @@ for(let j = 0; j < users.length; j++){
 
 }
 
+// Создаем обьект с массива обьектов
+const userObj = {}
+for(let i = 0; i<users.length; i++){
+    userObj[users[i].name] = users[i]
+}
+console.log(userObj)
+// получить любое поле обьекта, значением которого есть обьект
+console.log(userObj['Dora'])
+
+
 // for in -- доступ до ключей(полей) обьекта
 const user = {
     name : 'Mark',
     age: 20
 }
 for(let key in user){       // key - поле обьекта
-    console.log(key)
-    console.log(user[key])
+    console.log(key)    // поле обьекта
+    console.log(user[key])  // значение поля обьекта
 }
 
 // for of -- для получения элементов массива
