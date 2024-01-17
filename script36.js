@@ -9,7 +9,7 @@ console.log(foo.field)
 // функции высшего порядка:
 // принимают как параметр другие функции или возращают функции
 
-
+// делаем аналог функции map
 const maska = ['saran', 'vera', 'kuzmich', 'tom']
 // надо получить масив с длинами слов -- [5, 4, 7, 3]
 
@@ -24,6 +24,8 @@ for(let i = 0; i < maska.length; i++){
     newArr2.push(maska[i].toUpperCase())
 }
 console.log(newArr2) //['SARAN', 'VERA', 'KUZMICH', 'TOM']
+
+// callback-функция  -- та которая принята была как аргумент другой функцией и потом там вызвана
 
 //функция высшего порядка, которая обьеденит в себе выполнение этих задач
 const names = ['alona', 'sveta', 'vera', 'nastya']
@@ -91,9 +93,10 @@ function quest2(job){
     const jobDictionary = {
         developer: 'что такое js?',
         teacher: 'какой предмет вы ведете?'
-    }  
+    }
+    const vvv = jobDictionary[job] ? jobDictionary[job] : "кто Вы?"   
     return function(name){
-        return `${name} ${jobDictionary[job]}`
+        return `${name} ${vvv}`
         }
 }
 
