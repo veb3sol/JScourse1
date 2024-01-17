@@ -2,10 +2,13 @@
 // коллекция аргументс
 
 function foo(x){
+    // ожидаем один аргумент, а передали больше аргументов
     console.log(arguments)      // получаем псевдомассив - обьект который можно перебирать циклами
     console.log(x)      // получим первый переданый аргумент
-    console.log(arguments[1])      // sringok - получим второй переданый аргумент
-    console.log(arguments[2])      // sringok - получим третий переданый аргумент
+    // имеем доступ ко всем аргументам которые передали в функцию
+    console.log(arguments[0])      // 11
+    console.log(arguments[1])      // 'sringok'
+    console.log(arguments[2])      // [1,2,3]
     //arguments - обьект, а не массив - не имеет методов массивов  -- поэтому непопулярна
     for(let i = 0; i < arguments.length; i++){
         console.log(arguments[i])       // вывод всех аргументов переданых в функцию

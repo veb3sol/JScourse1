@@ -13,13 +13,13 @@ function sayHello(fName, lName = 'Default'){
 
 //sayHello("ser", "adr")      //Hello!! - вызывать можно в любом месте
 // let res = sayHello("ser", "adr")      //отработает функция, res = undefined -- если нету return
-let res2 = sayHello("ser", "adr")+' !'      //отработает функция, res = undefined -- если нету return
-let res3 = sayHello()      //отработает функция, res = undefined -- если нету return
+let res2 = sayHello("ser", "adr")+' !'      
+//let res3 = sayHello()      
 let res4 = sayHello('ffffffff')      //res = undefined -- а в выполении функции подставится аргумент по умолчанию
 
 console.log(res2) // при наличии return - вывод того что в ретурне
-console.log(res3) // при наличии return - вывод того что в ретурне
-console.log(res4) // при наличии return - вывод того что в ретурне
+//console.log(res3) // при наличии return - вывод того что в ретурне
+console.log(res4) // Привет ffffffff Default
 
 // область видимости
 let x =10
