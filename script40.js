@@ -52,6 +52,13 @@ prod1.getName() //Intel - как и во втором обьекте, вывод
 
 let stroka = 'Data my Data'
 const rev = stroka.split('').reverse().join('')     // вызов метода цепочки
+
+// split('')		вернет массив		
+// reverse()		перевернет массив		
+// join('')		склеит массив в строку с нужным разделителем
+
+//каждая такая функция должна вернуть что то через return, иначе результат ее работы будет undtrfined
+
 console.log(rev)        //ataD ym ataD - перевернутая строка
 
 
@@ -75,7 +82,7 @@ const prod3 = {
 function getName(){             // отдельный метод
     console.log(this.title)
 }
-function getMyPrice(curency = '$'){             // отдельный метод
+function getMyPrice(curency = '$'){     // отдельная функция которая будет вызвана как метод, и которая принимает один аргумент и у которого есть значение по умолчанию
     console.log(curency + this.price)
 }
 
@@ -89,14 +96,18 @@ getMyPrice.call(prod4, '*');   // *999
 getMyPrice.apply(prod4, ['#']) // #999
 // .apply(prod1, [arg1, arg2....]) -- второй аргумент - массив аргументов для метода который вызывается 
 
+_
 const prod5 = {            // обьект без нужного метода
     title: 'DAF',
     price: 999,
     getMyPrice
 }
-setTimeout(prod5.getMyPrice, 1000)  //$undefined - через секунду
+setTimeout(prod5.getMyPrice, 1000)  //$undefined - через секунду   потому что из за setTimeout контекст this === window
 
 const getPriceBind = prod5.getMyPrice.bind(prod5, '**') // prod5 - контекст, ** - аргумент для getMyPrice
-//.bind(prod1, arg1, arg2, .....) - не вызывает функцию, а вщзращает ее с привязаным контекстом (с нужными аргументами и контекстом где вызвать)
+//.bind(prod1, arg1, arg2, .....) - не вызывает функцию, а возращает ее с привязаным контекстом (с нужными аргументами и контекстом где вызвать)
 console.log(getPriceBind)   //сама функция getMyPrice
 setTimeout(getPriceBind, 1000)  //**999 - через секунду
+
+// getPriceBind является с привязаным контекстом и не может быть изменена call или apply
+// bind используется редко - чаще стрелочные функции
