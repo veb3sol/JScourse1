@@ -19,10 +19,17 @@ const returnObj = (str = '') => {   // если не писать return - то 
         lob: str.length
     }
 }
+// если не пишем return
+const returnObj2 = (str = '') => ({
+        obj: str,
+        lob: str.length
+    })
+
+
 console.log(returnObj('Vasya')) //{obj: 'Vasya', lob: 5}
 
 function sum(a, b){
-    console.log(arguments)  // arguments - хранит все аргументы, даже не обьявленные, но переданые в функцию
+    console.log(arguments)  // arguments - хранит все аргументы, даже не обьявленные, но переданые в функцию -- иттерируемый обьект
     return a+b
 }
 // Различия обычных и стрелочных функций
@@ -40,4 +47,23 @@ const obj = {
 
 obj.getName()   //{name: 'Den', age: 30, getName: ƒ, getAge: ƒ}
 obj.getAge()    // window, потому что нету this в стрелочной ф-ции, берется на уровень выше
+
+// Вывод - this не надо использовать в стрелочных функциях
+
+// можно обойти это ограничение так ---
+const obj2 = {
+    name: 'Denis',
+    age: 40,
+    getName(){
+        console.log(this)
+    },
+    getAgeArrow: null,  // промежуточное свойство
+    getAge(){
+        this.getAgeArrow = () => console.log(this)     // this имеет контекст потому что нахрдится в getAge()
+        setTimeout(() = console.log(this))          // нету потери контекста
+    }
+}
+
+obj2.getAge() // происходит переопределение getAgeArrow
+obj2.getAgeArrow()  // срабатывает стрелочная функция
 
