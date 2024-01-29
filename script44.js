@@ -44,7 +44,7 @@ const users = [
         balans: 2200,
         age: 44,
         name: 'Ka',
-        company: 'Tra'
+        company: 'Zara'
     }
 ]
 
@@ -59,7 +59,7 @@ const users = [
 // find  - для поиска в массиве
 
 // forEach
-users.forEach((user, i, arr) => {
+users.forEach((user, i, arr) => {       // можно не указывать 3-й параметр если он нам ненужен
     console.log(user, i, arr)
     // user - элемент массива
     // i - индекс
@@ -74,10 +74,13 @@ const activeUser = users.filter(user => user.isActive === true)
 // const activeUser = users.filter(user => user.isActive) -- тоже вариант записи
 console.log(activeUser) // массив с активными пользователями
 
-// map - возращает массив из того что веращает колбек переданый в него
-// const userName = users.map((user, i, arr) => user.name)
-const userName = users.map((user, i, arr) => ({name: user.name, age: user.age})) // массив обьектов с опред полями
+// map - возращает массив из того что вернет колбек переданый в него
+
+const userName = users.map((user, i, arr) => user.name) // массив имен пользователей
 console.log(userName)  //(5) ['Luis', 'Ara', 'Fan', 'Trees', 'Ka'] - массив имен юзеров
+
+const userName1 = users.map((user, i, arr) => ({name: user.name, age: user.age})) 
+console.log(userName1)  //// массив обьектов с опред полями
 
 // reduce - преобразовать массив в что то или посчитать что то
 // reduce - 1 арг - колбэк, 2 арг - стартовое значение, если его нету, то это 1 эл массива
@@ -86,8 +89,11 @@ const totalBalance = users.reduce((acc, user, i, arr) =>{
     // return acc - тогда на каждой иттерации acc вернет 0
     return (acc += user.balans)     // на каждой итерр сумируется баланс юзеров
 }, 0)                  // все арг можно не передавать. 0 - начальное значение acc
-// acc - аккумулятор - хранится стартовое значение (0) и результат предыдущей иттерации
+// acc - аккумулятор - хранится стартовое значение (0) при первой иттерации и результат предыдущей иттерации
+// если не передать стартовое значение -- то на первой иттерации acc будет равен 1 элементу массива
 // ЕСЛИ ФУНКЦИЯ НИЧЕГО НЕ ВОЗРАЩАЕТ, ТО ОНА ВОЗРАЩАЕТ undefined, поэтому acc = 0 на первой иттерац, а потом на всех undefined (при условии что return нету)
+
+console.log(totalBalance)   // сумма всех балансов пользователя
 
 // Создание обекта с массива с помощью reduce
 const userObj = users.reduce((acc, user) => {
@@ -97,7 +103,7 @@ const userObj = users.reduce((acc, user) => {
 console.log(userObj) // получаем обьект обьектов с ключами _id
 
 // some
-const isActiveUser = users.some((user) => user.isActive === true)
+const isActiveUser = users.some((user, i, arr) => user.company === 'Zara')
 console.log(isActiveUser) //true - есть ли хоть один активный пользователь
 
 // every
@@ -107,6 +113,9 @@ console.log(everyUsersIsActive) // false - все ли пользователи 
 // find
 const user = users.find(user => user.name === 'Ka')
 console.log(user) // получим юзера с таким именем
+
+const us = users.find(user => user.age > 10)
+console.log(us) // если несколько юзеров подходят, то получаем одного - первоого кто подходит в массиве
 
 // sort - изменяет исходный массив, по умолчанию сортирует как строки, по лексике
 const arr = ['Sem', 'Den', 'Car', 'Zina']
@@ -126,3 +135,52 @@ console.log(numArr)//(8) [1, 2, 3, 5, 6, 7, 8, 10]
 // сортировка юзеров по возрасту
 const sortUsers = users.sort((prevUser, nextUser) => prevUser.age - nextUser.age)
 console.log(sortUsers)
+
+
+// эксперимент с for in, for of -- практически не используются, вместо них forEach 
+const fredy = [
+    {
+        name: 'dave',
+        age: 55
+    },
+    {
+        name: 'Bony',
+        age: 14
+    },
+    {
+        name: 'Lada',
+        age: 89
+    },
+]
+
+for(let item in fredy){     // получим ключи или название полей обьекта
+    console.log(item)
+};
+
+for(let item of fredy){     // получим значение полей
+    console.log(item)
+};
+
+for(let r in [20,30,40,50,60]){
+    console.log(r)              // получаем индексы элементов массива -- 0 1 2 3 4 5 
+}
+for(let r of [20,30,40,50,60]){
+    console.log(r)              // получаем значения элементов массива -- 20, 30, 40, 50, 60 
+}
+
+// эксперимент с sort()
+
+const xx = [26, 7, 6, 25, 30, 13]
+const xxx = xx.sort((prev, next) =>{
+    console.log(`prev - ${prev}. next - ${next}`)
+    return prev - next
+})
+
+console.log(xxx)
+
+// [10, 7, 6, 25, 16, 13] - получаем:
+// prev - 7. next - 10
+// prev - 6. next - 7
+// prev - 25. next - 6
+// prev - 16. next - 25
+// prev - 13. next - 16
