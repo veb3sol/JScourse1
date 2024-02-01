@@ -19,10 +19,10 @@ function updateValue(value = 0){
 const upVal = updateValue(2)
 const upVal2 = updateValue(4)
 // при каждом таком вызове создается новое окружение и новая лексическая модель
-// console.log(upVal)
-// console.log(upVal(1)) //3
-// console.log(upVal(0)) //3 - осталось 3, потому что x=3 в памяти
-// console.log(upVal2(4)) //8
+// console.log(upVal)  // тут будет функция
+// console.log(upVal(1)) //3 -- тут мы вызываем эту функцию, передаем ей параметр, а она помнит все переменные и параметры своего родителя
+// console.log(upVal(0)) //3 - осталось 3, потому что x=3 в памяти, ранее функция изменила переменную родителя
+// console.log(upVal2(4)) //8 -- 4+4 это новый контекст и вызов предыдущей функции которая якобы поменяла x не влияет
 // console.log(upVal2(0)) //8 - осталось 8, потому что x=4 в памяти
 
 
@@ -31,7 +31,7 @@ function checkCred(){
     const login = 'test'
     const password = 'somePass'
     // этипеременные не будут очищатся, потому что ниже есть методы которые их используют
-    return {
+    return {                // возращаем обьект с методами
         checkLog(val1){
             return login === val1
         },
@@ -49,13 +49,15 @@ console.log(check.checkLog('asdfg')) // false - лигин не правильн
 function closureExemple() {
     const arrOfFunc = []
     let value = ''
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 10; i++){    // на каждои иттерации будет новое let i. а еще i это внутренняя переменная цикла
         value +=i
         arrOfFunc.push(function(){
-            console.log(i, value)
+            console.log(i, value)   
         })
     }
-    return arrOfFunc
+    return arrOfFunc    // возвращаем когда value = '0123456789' 
 }
 const res = closureExemple() // массив функций
-res[1]() // 1 '0123456789'
+res[1]() // 1 '0123456789'    если var i вместо let i --- тогда 10 '0123456789'
+
+// undefined -- переменная обьявлена но пока не имеет значения
