@@ -55,5 +55,3 @@ console.log(entries)
 
 let fe = Object.fromEntries([['a', 'fara'], ['b', 'papa'], ['c', 'mama']])
 console.log(fe)  //{a: 'fara', b: 'papa', c: 'mama'} -- обьект где ключи это первые знвчения в массивах, а значения - вторые значения в массивах
-
-
