@@ -31,7 +31,7 @@ console.log(objRes2 == obj1)     // true -ссылка на один обьек�
 let objRes3 = Object.assign({}, obj1)
 console.log(objRes3.info === obj1.info) // true - вложеные обьекты копируются по ссылке
 
-let objRes3 = Object.assign({}, obj1, obj2) // obj2 перезапишет в новом массиве все одинаковые свойства с obj1
+objRes3 = Object.assign({}, obj1, obj2) // obj2 перезапишет в новом массиве все одинаковые свойства с obj1
 
 console.log(JSON.stringify(obj1))   // строка - {"name":"Den","info":{"skills":["html","css"]},"age":30}
 

@@ -13,6 +13,7 @@ const user  = {
 // const lname = user.lName
 
 // при использовании деструктизациии
+// свойства которые мы вытягиваем должны называться точно так же как в обьекте!!!
 // const {fname, lName, age = 30} = user   // age по умолчанию = 30, мы не знаем или есть такое свойство
 // console.log(fname, lName)   //Den Shack
 // console.log(age)   //30 - значение по умолчанию
@@ -39,12 +40,13 @@ console.log(s1)     //zaz
 const nameOst = ['Ivan', 'Den', 'Anna', 'Lora', 'Sliva']
 const [nam1, ...otherNames] = nameOst
 console.log(nam1)       //Ivan
-console.log(otherNames)     //(4) ['Den', 'Anna', 'Lora', 'Sliva'] - остальная часть массива
+console.log(otherNames)     //(4) ['Den', 'Anna', 'Lora', 'Sliva'] - массив из остальных частей массива
 
-// копирование массива
+// копирование массива - 1 вариант
 const [...newNames] = nameOst
 console.log(newNames)  //(5) ['Ivan', 'Den', 'Anna', 'Lora', 'Sliva'] - копия nameOst - неглубокое
-console.log(newNames === nameOst)  //false - это разные массивы
+console.log(newNames === nameOst)  //false - это разные 
+// копирование массива - 2 вариант
 const newNames1 = [...nameOst]
 console.log(newNames1)  //(5) ['Ivan', 'Den', 'Anna', 'Lora', 'Sliva'] - копия nameOst - неглубокое
 
