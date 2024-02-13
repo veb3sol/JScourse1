@@ -33,12 +33,15 @@ let item = {name: 'Intel', price: '120$', discount: 'hhh15%'}
 // и записать туда цену с учетом скидки и вывести ее в консоль
 // особенность что все поля которые есть -- строки
 
-// if('discount' in item){          -- проверка есть ли такое поле в item
+// if('discount' in item){          -- проверка есть ли такое поле в item 
 //     console.log('5555')          -- но если оно faalse - то и вывода не будет
 // }
 
+// if(item[discount])  -- true если свойство есть и если оно имеет значение 
+
 let price = parseFloat(item.price)
 let discount = parseFloat(item.discount)
+// let isVal = typeof price === 'number' && typeof discount === 'number'  -- будет true, потому что NaN - число
 let isValid = !isNaN(price) && !isNaN(discount)
 if(isValid){
     item.priceWithDiscount = price*(100 - discount)/100
@@ -48,7 +51,7 @@ if(isValid){
 }
 
 //5
-let product = {name: "Яблоко", price: "100$"}
+let product = {name: "Яблоко", price: "15$"}
 let min = 10 //минимальная цена
 let max = 20 // максимальная цена
 // если цена яблока между min max -- вывести назвоние товара, иначе вывести что товаров не найдено
@@ -78,6 +81,28 @@ for (let i = 0; i < str.length; i++) {
 }
 console.log(newStr) //I Am In The Easycode
 
+// 4 на основе строки JavaScript is a pretty good language - новую строку где каждое слово начинается  с большой
+// а пробелы удалены
+let s1 = "JavaScript is a pretty good language"
+let s2 = ''
+for(let i = 0; i < s1.length; i++){
+    if(s1[i-1] === ' ' && s1[i] !== " " && i === 0 ){
+        s2 += s1[i]
+    } else if(s1[i] !== " "){
+        s2 += s1[i]
+    }
+}
+console.log(s2)
+
+// эксперимент - перебор масива с конца 
+const bn = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+let g = 15
+for(; g-- ;){   //for(;  ;g--)  -- бесконечный цикл
+    console.log(bn[g])      // вывод от 15 до 1 в обратном порядке
+}
+
+
+
 //2 (6)
 //Перебрать обьект и если значение в свойстве строка - переписать ее в верхнем регистре
 // использовать for in (получаем ключи)
@@ -92,6 +117,8 @@ for(let k in list){
         list[k] = list[k].toUpperCase();        //{name: 'DENIS', work: 'KODER', age: 26}
     }
 }
+
+// 34min
 
 //3 (2)
 // Дана строка "tseb eht ma i". сделать строку - перевертышь
