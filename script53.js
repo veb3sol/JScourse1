@@ -221,7 +221,8 @@ function CColl(){
     for(let i = 0; i < arguments.length; i++){
         arguments[i].shift()        // из мас удаляет 1 элемент и возращает то что удалил
        // console.log(arguments[i])     -- массив остается без 1 элемента
-        rez2.push(arguments[i])     // добавляем массив в массив результата
+        //rez2.push(arguments[i].shift())     // так не делать - получим массив с того что было удалено
+        rez2.push(arguments[i])     // добавляем измененный массив в массив результата
     }
     return rez2
 }
