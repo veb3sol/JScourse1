@@ -15,6 +15,9 @@ const newArr = arr.map((num) => {
   };
 });
 
+// сокращенный код
+const newArr1 = arr.map((num) => ({ digit: num, odd : num%2 !== 0 }));
+    
 console.log(newArr);
 
 // 2,3 - на использование метода врелисан????
@@ -52,7 +55,20 @@ function getStringFromArr(arr){
     console.log(strFromArr)     //Happy New Year!
 }
 
+// сокращенный вариант
+function getStringFromArr1(arr){
+  const copyArr = arr
+                  .slice()
+                  .sort((prev, next) => prev.index - next.index)
+                  .reduce((acc, current) => (acc += current.char), '') 
+  
+  console.log(copyArr)     //Happy New Year!
+}
+
 getStringFromArr(strArr)
+getStringFromArr1(strArr)
+
+
 
 // есть массив обьектов, надо отсортировать по цене и вывести товары, цена которых от мин до макс
 
@@ -73,4 +89,4 @@ function filterok(arr, min, max){
   return res.filter(produkt => produkt.price >= min && produkt.price <= max)
 }
 
-filterok(products, 15, 30)
+console.log(filterok(products, 17, 20))
