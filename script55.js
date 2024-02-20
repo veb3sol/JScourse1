@@ -17,6 +17,7 @@ const newArr = arr.map((num) => {
 
 // сокращенный код
 const newArr1 = arr.map((num) => ({ digit: num, odd : num%2 !== 0 }));
+// из за того что обьект в скобках как и тело функции -- оборачиваем возвращаемый обьект в дужки
     
 console.log(newArr);
 
